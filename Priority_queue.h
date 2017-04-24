@@ -52,11 +52,7 @@ heap_size( 0 ),
 capacity( n <= 0 ? 1 : n ),
 heap( new pair[capacity] ),
 node_map( new int[capacity] ) {
-	
-	// Initialize all values of node_map to -1 (not in the queue)
-	for (int i = 0; i < capacity; ++i) {
-		node_map[i] = -1;
-	}
+	// empty constructor
 }
 
 Priority_queue::Priority_queue() {}
@@ -157,7 +153,7 @@ int Priority_queue::extract_min() {
 
 void Priority_queue::decrease_key( double new_priority, int node ) {
 	int position = node_map[node];
-	if (position == -1) {
+	if (position == 0 && node != heap[0].node) {
 		insert(new_priority, node);
 	} else {
 		// Update the priority of the node
